@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <link rel="stylesheet" href="113306076_HW7.css">
+    <style>
+        .hidden { display: none; }
+        .form-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: 1px solid #ccc;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="photo-panel"></div>
+            <div class="text-content">
+                <div class="about-me">
+                    <h2 id="name-label">Andy</h2>
+                    <button id="editNameBtn">Edit</button>
+                </div>
+                <div class="contact-info">
+                    <h2>Contact</h2>
+                    <p>Email:113306076@g.nccu.edu.tw</p>
+                </div>
+                <div class="nccu-icon">
+                    <img src="090.png" alt="NCCU Icon">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <section class="education">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span>2023 - now</span>
+                        <span>National Chengchi University, MIS</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span>2021 - 2023</span>
+                        <span>Taichung First Senior High School</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span>2018 - 2021</span>
+                        <span>St. Viator Catholic High School</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="homework-list">
+                <h2>Homework List</h2>
+                <ul>
+                    <li><a href="https://github.com/nccu1133060/HW1.git" target="_blank">HW1 - https://github.com/nccu1133060/HW1.git</a></li>
+                    <li><a href="https://github.com/nccu1133060/HW2.git" target="_blank">HW2 - https://github.com/nccu1133060/HW2.git</a></li>
+                    <li><a href="https://github.com/nccu1133060/HW3.git" target="_blank">HW3 - https://github.com/nccu1133060/HW3</a></li>
+                </ul>
+            </section>
+
+            <section class="favorite-music">
+                <h2>Favorite Music</h2>
+                <div class="albums" id="music-list">
+                    <a href="https://www.youtube.com/watch?v=B13RLYxcxGk" target="_blank">
+                        <img src="1234.png" alt="Music 1" width="20" height="20">
+                        <p>白鯨</p>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=4bSeT_9gmJs" target="_blank">
+                        <img src="1234.png" alt="Music 2" width="20" height="20">
+                        <p>安九</p>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=g9dWCal7nEM" target="_blank">
+                        <img src="1234.png" alt="Music 3" width="20" height="20">
+                        <p>你終究不愛這世界</p>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=lr5CwIt3tNM" target="_blank">
+                        <img src="1234.png" alt="Music 4" width="20" height="20">
+                        <p>醉後喜歡我</p>
+                    </a>
+                </div>
+                <button id="addMusicBtn">Add Music</button>
+            </section>
+        </div>
+    </div>
+
+    <!-- Music Form -->
+    <div id="musicForm" class="form-popup hidden">
+        <label for="musicLink">Music Link:</label>
+        <input type="url" id="musicLink" placeholder="Enter music link">
+        <label for="musicName">Music Name:</label>
+        <input type="text" id="musicName" placeholder="Enter music name">
+        <button id="submitMusic">Submit</button>
+    </div>
+
+    <script>
+        // Name Editing Logic
+        let isEditing = false;
+        const nameLabel = document.getElementById("name-label");
+        const editNameBtn = document.getElementById("editNameBtn");
+
+        editNameBtn.addEventListener("click", () => {
+            if (isEditing) {
+                const inputField = document.getElementById("nameInput");
+                nameLabel.textContent = inputField.value;
+                inputField.remove();
+                editNameBtn.textContent = "Edit";
+            } else {
+                const inputField = document.createElement("input");
+                inputField.id = "nameInput";
+                inputField.value = nameLabel.textContent;
+                nameLabel.textContent = "";
+                nameLabel.appendChild(inputField);
+                editNameBtn.textContent = "Save";
+            }
+            isEditing = !isEditing;
+        });
+
+        // Add Music Logic
+        const addMusicBtn = document.getElementById("addMusicBtn");
+        const musicForm = document.getElementById("musicForm");
+        const musicList = document.getElementById("music-list");
+        const submitMusic = document.getElementById("submitMusic");
+
+        addMusicBtn.addEventListener("click", () => {
+            musicForm.classList.toggle("hidden");
+        });
+
+        submitMusic.addEventListener("click", () => {
+            const musicLink = document.getElementById("musicLink").value;
+            const musicName = document.getElementById("musicName").value;
+
+            if (musicLink && musicName) {
+                const musicItem = document.createElement("a");
+                musicItem.href = musicLink;
+                musicItem.target = "_blank";
+
+                const musicImg = document.createElement("img");
+                musicImg.src = "1234.png";
+                musicImg.alt = musicName;
+                musicImg.width = 20;
+                musicImg.height = 20;
+
+                const musicText = document.createElement("p");
+                musicText.textContent = musicName;
+
+                musicItem.appendChild(musicImg);
+                musicItem.appendChild(musicText);
+
+                musicList.appendChild(musicItem);
+                musicForm.classList.add("hidden");
+                document.getElementById("musicLink").value = "";
+                document.getElementById("musicName").value = "";
+            } else {
+                alert("Please fill out both fields!");
+            }
+        });
+    </script>
+</body>
+</html>
