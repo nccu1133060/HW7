@@ -1,0 +1,144 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.main-container {
+    display: flex;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Panel */
+.left-panel {
+    width: 35%;
+    background-color:#333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    color: white
+}
+
+.photo-panel {
+    height: 300px;
+    background-image: url('OIP.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nccu-icon img {
+    width: 80px;
+    margin-top: 20px;
+}
+
+/* Right Panel */
+.right-panel {
+    flex: 1;
+    padding: 20px;
+    background-color: ＃F5DEB3;
+}
+
+/* Section Styling */
+h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    color: white;
+    text-align: center;
+}
+
+.timeline {
+    margin-top: 15px;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.timeline-item span {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.homework-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.homework-list ul li {
+    margin-bottom: 8px;
+    text-decoration: none; 
+}
+
+.homework-list ul li a {
+    
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s; 
+    color: gray; 
+}
+
+.homework-list ul li a:hover {
+    color: black; 
+    text-decoration: underline;
+}
+
+.favorite-music .albums {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    text-align: center;
+    justify-content: center; 
+    text-decoration: none; 
+}
+
+.favorite-music .albums img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center; 
+        gap: 15px; 
+        text-decoration: none; 
+
+}
+.homework-list ul li a:hover,
+.favorite-music .albums a:hover {
+    color: gray; 
+    text-decoration: underline; 
+}
+
+.note {
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: white;
+
+}
+
+.homework-list ul li a,
+.favorite-music .albums a {
+    text-decoration: none; 
+    color: black; 
+    font-size: 1em; 
+    transition: color 0.3s ease; 
+}
